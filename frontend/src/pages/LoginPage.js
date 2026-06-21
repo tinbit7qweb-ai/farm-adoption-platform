@@ -7,27 +7,39 @@ const demoAccounts = [
     label: "普通用户",
     username: "user1",
     password: "123456",
+    realName: "123",
+    role: "user",
     note: "浏览地块、认养、聊天、查溯源",
   },
   {
     label: "农场主",
     username: "farmer1",
     password: "123456",
+    realName: "李师傅",
+    role: "farmer",
     note: "进入农场主后台管理地块和订单",
   },
   {
     label: "管理员",
     username: "admin",
     password: "123456",
+    realName: "管理员",
+    role: "admin",
     note: "保留管理角色演示账号",
   },
 ];
 
-function formatNetworkError(error) {
-  if (String(error?.message || "").includes("Failed to fetch")) {
-    return "登录失败：后端服务未启动或 8080 端口不可访问。请先启动 Spring Boot 后端。";
-  }
-  return `登录失败：${error.message}`;
+function findDemoAccount(username, password) {
+  return demoAccounts.find((account) => account.username === username && account.password === password);
+}
+
+function toDemoUser(account) {
+  return {
+    userId: account.username === "farmer1" ? 2 : account.username === "admin" ? 3 : 1,
+    username: account.username,
+    realName: account.realName,
+    role: account.role,
+  };
 }
 
 function LoginPage({ onLogin }) {
@@ -39,6 +51,12 @@ function LoginPage({ onLogin }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const finishLogin = (user) => {
+    localStorage.setItem("userName", user.realName || user.username);
+    localStorage.setItem("userType", user.role);
+    onLogin(user);
+  };
 
   const fillDemoAccount = (account) => {
     setUsername(account.username);
@@ -56,14 +74,18 @@ function LoginPage({ onLogin }) {
     try {
       const response = await login(username, password);
       if (response.code === 200) {
-        localStorage.setItem("userName", response.data.realName || response.data.username);
-        localStorage.setItem("userType", response.data.role);
-        onLogin(response.data);
+        finishLogin(response.data);
       } else {
         setError(response.message || "用户名或密码错误。");
       }
     } catch (err) {
-      setError(formatNetworkError(err));
+      const demoAccount = findDemoAccount(username, password);
+      if (demoAccount) {
+        setSuccess("后端暂不可用，已使用本地演示账号进入平台。");
+        finishLogin(toDemoUser(demoAccount));
+      } else {
+        setError("登录失败：后端服务未启动或网络不可访问。请启动 Spring Boot 后端，或使用演示账号登录。");
+      }
     } finally {
       setLoading(false);
     }
@@ -84,7 +106,7 @@ function LoginPage({ onLogin }) {
         setError(response.message || "注册失败，请检查用户名是否已存在。");
       }
     } catch (err) {
-      setError(formatNetworkError(err).replace("登录失败", "注册失败"));
+      setError("注册失败：后端服务未启动或网络不可访问。静态演示环境暂不支持真实注册。");
     } finally {
       setLoading(false);
     }
@@ -117,7 +139,7 @@ function LoginPage({ onLogin }) {
           <h2>{isLogin ? "进入平台" : "创建账号"}</h2>
           <p>
             {isLogin
-              ? "选择演示账号或输入已有账号登录。演示密码会自动填入，但不会在页面展示。"
+              ? "选择演示账号或输入已有账号登录。演示账号会自动填入密码，但不会在页面明文展示。"
               : "注册后可按角色进入对应页面。"}
           </p>
         </div>
