@@ -28,6 +28,23 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+      (function () {
+        var base = "/farm-adoption-platform";
+        if (!location.pathname.startsWith(base)) return;
+
+        var imageSrc = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, "src");
+        Object.defineProperty(HTMLImageElement.prototype, "src", {
+          get: imageSrc.get,
+          set: function (value) {
+            if (typeof value === "string" && value.indexOf("/images/") === 0) {
+              value = base + value;
+            }
+            imageSrc.set.call(this, value);
+          }
+        });
+      })();
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.
