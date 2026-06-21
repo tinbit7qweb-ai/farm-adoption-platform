@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/farm-adoption-platform/static/css/main.eda77b99.css",
+    "main.js": "/farm-adoption-platform/static/js/main.1dd84af6.js",
+    "static/js/453.20359781.chunk.js": "/farm-adoption-platform/static/js/453.20359781.chunk.js",
+    "index.html": "/farm-adoption-platform/index.html",
+    "main.eda77b99.css.map": "/farm-adoption-platform/static/css/main.eda77b99.css.map",
+    "main.1dd84af6.js.map": "/farm-adoption-platform/static/js/main.1dd84af6.js.map",
+    "453.20359781.chunk.js.map": "/farm-adoption-platform/static/js/453.20359781.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eda77b99.css",
+    "static/js/main.1dd84af6.js"
+  ]
+}
