@@ -1,0 +1,36 @@
+<svg width="720" height="720" viewBox="0 0 720 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="720" rx="48" fill="#08C160"/>
+  <text x="360" y="88" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="44" font-weight="800" fill="white">演示付款码</text>
+  <rect x="120" y="130" width="480" height="480" rx="28" fill="white"/>
+  <g fill="#111">
+    <rect x="166" y="176" width="126" height="126"/>
+    <rect x="192" y="202" width="74" height="74" fill="white"/>
+    <rect x="216" y="226" width="26" height="26"/>
+    <rect x="428" y="176" width="126" height="126"/>
+    <rect x="454" y="202" width="74" height="74" fill="white"/>
+    <rect x="478" y="226" width="26" height="26"/>
+    <rect x="166" y="438" width="126" height="126"/>
+    <rect x="192" y="464" width="74" height="74" fill="white"/>
+    <rect x="216" y="488" width="26" height="26"/>
+    <rect x="328" y="188" width="28" height="28"/>
+    <rect x="372" y="188" width="28" height="28"/>
+    <rect x="328" y="232" width="72" height="28"/>
+    <rect x="328" y="276" width="28" height="28"/>
+    <rect x="372" y="276" width="72" height="28"/>
+    <rect x="316" y="330" width="40" height="40"/>
+    <rect x="372" y="330" width="28" height="84"/>
+    <rect x="428" y="330" width="28" height="28"/>
+    <rect x="500" y="330" width="28" height="84"/>
+    <rect x="316" y="414" width="56" height="28"/>
+    <rect x="414" y="400" width="42" height="42"/>
+    <rect x="470" y="456" width="84" height="28"/>
+    <rect x="330" y="470" width="28" height="84"/>
+    <rect x="386" y="470" width="56" height="28"/>
+    <rect x="386" y="526" width="28" height="28"/>
+    <rect x="456" y="512" width="28" height="42"/>
+    <rect x="512" y="512" width="42" height="42"/>
+  </g>
+  <circle cx="360" cy="360" r="68" fill="#08C160"/>
+  <path d="M325 360L350 386L398 332" stroke="white" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="360" y="654" text-anchor="middle" font-family="Microsoft YaHei, Arial, sans-serif" font-size="28" font-weight="700" fill="white">课程演示使用，不涉及真实收款</text>
+</svg>
